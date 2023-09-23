@@ -1,0 +1,6 @@
+.imgLading{
+    display: flex;
+    justify-items: right;
+    align-items: center;
+    width: 100%;
+}
