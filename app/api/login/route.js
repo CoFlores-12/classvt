@@ -33,9 +33,11 @@ export async function POST(request) {
         }
         const { origin } = absoluteUrl(request);
         if (items[0].role === 'student') {
-            response = NextResponse.json({ url: origin+'/home'})
+            response = NextResponse.json({ url: '/home'})
         } else if (items[0].role === 'teacher') {
-            response = NextResponse.json({ url: origin+'/home'})
+            response = NextResponse.json({ url: '/admin/teacher'})
+        } else if (items[0].role === 'admin') {
+            response = NextResponse.json({ url: '/admin/admin'})
         }
     }
     return response

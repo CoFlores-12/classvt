@@ -1,6 +1,74 @@
 "use client"
 import Image from "next/image";
 import './home.css'
+import CardClass from "./cardClass";
+import Works from "./works";
+
+const classes = [
+  {
+    name: "Class 1",
+    code: "IS01",
+    pendings: 1,
+    link: "/class/1",
+    id: 1,
+    color: "blue"
+  },
+  {
+    name: "Class 2",
+    code: "IS02",
+    pendings: 3,
+    link: "/class/2",
+    id: 2,
+    color: "yellow"
+  },
+  {
+    name: "Class 3",
+    code: "IS03",
+    pendings: 2,
+    link: "/class/3",
+    id: 3,
+    color: "lime"
+  }
+];
+
+const pendings = [
+  {
+    name: "work 1",
+    className: "Class 1",
+    link: "/pending/1",
+    id: 1
+  },
+  {
+    name: "work 1",
+    className: "Class 2",
+    link: "/pending/1",
+    id: 1
+  },
+  {
+    name: "work 2",
+    className: "Class 2",
+    link: "/pending/1",
+    id: 1
+  },
+  {
+    name: "Quiz 1",
+    className: "Class 3",
+    link: "/pending/1",
+    id: 1
+  },
+  {
+    name: "Quiz 1",
+    className: "Class 2",
+    link: "/pending/1",
+    id: 1
+  },
+  {
+    name: "Project 1",
+    className: "Class 3",
+    link: "/pending/1",
+    id: 1
+  },
+];
 
 export default function MyComponent() {
   const src = "https://api.dicebear.com/7.x/adventurer/svg?seed=Mia"
@@ -80,22 +148,12 @@ export default function MyComponent() {
                         <div className="grid grid-cols-12 gap-6 border-b-2 pb-5">
                           <div className="col-span-12 sm:col-span-12 md:col-span-8 lg:col-span-8 xxl:col-span-8">
                             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 mt-3">
-                               <div className="p-4">
-                                  <p className="text-xl font-bold">work 1</p>
-                                  <p className="text-xs font-semibold text-gray-400">Class 1</p>
-                               </div>
-                               <div className="p-4">
-                                  <p className="text-xl font-bold">work 2</p>
-                                  <p className="text-xs font-semibold text-gray-400">Class 2</p>
-                               </div>
-                               <div className="p-4">
-                                  <p className="text-xl font-bold">work 3</p>
-                                  <p className="text-xs font-semibold text-gray-400">Class 3</p>
-                               </div>
-                               <div className=" p-4">
-                                  <p className="text-xl font-bold">work 2</p>
-                                  <p className="text-xs font-semibold text-gray-400">Class 1</p>
-                               </div>
+                              { pendings.map((pending, index) => {
+                                return (
+                                  <Works key={pending.id} name={pending.name} className={pending.className} link={pending.link} id={pending.id} />
+                                );
+                                })
+                              }
                             </div>
                           </div>
                           <div className="col-span-12 sm:col-span-12 md:col-span-4 lg:col-span-4 xxl:col-span-4">
@@ -109,57 +167,12 @@ export default function MyComponent() {
                           </div>
                         </div>
                         <div className="grid grid-cols-1 gap-2 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 mt-3">
-                          <div className="relative w-full h-52 bg-cover bg-center group rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out sassd123"
-                           >
-                              <div className="absolute inset-0 bg-pink-900 bg-opacity-75 transition duration-300 ease-in-out"></div>
-                              <div className="relative w-full h-full px-4 sm:px-6 lg:px-4 flex items-center justify-center">
-                                <div>
-                                  <h3 className="text-center text-white text-lg">
-                                       IS01
-                                  </h3>
-                                  <h3 className="text-center text-white text-3xl mt-2 font-bold">
-                                       Class 1
-                                  </h3>
-                                  <h3 className="text-white text-lg mt-2 text-yellow-100 ">
-                                      2 pending
-                                  </h3>
-                                </div>
-                              </div>
-                          </div>
-                           <div className="relative w-full h-52 bg-cover bg-center group rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out snjdw"
-                        >
-                              <div className="absolute inset-0 bg-yellow-600 bg-opacity-75 transition duration-300 ease-in-out"></div>
-                              <div className="relative w-full h-full px-4 sm:px-6 lg:px-4 flex items-center justify-center">
-                                <div>
-                                  <h3 className="text-center text-white text-lg">
-                                       IS02
-                                  </h3>
-                                  <h3 className="text-center text-white text-3xl mt-2 font-bold">
-                                       Class 2
-                                  </h3>
-                                  <h3 className="text-white text-lg mt-2 text-yellow-100 ">
-                                      1 pendng
-                                  </h3>
-                                </div>
-                              </div>
-                          </div>
-                           <div className="relative w-full h-52 bg-cover bg-center group rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out snjdw1"
-                            >
-                              <div className="absolute inset-0 bg-blue-900 bg-opacity-75 transition duration-300 ease-in-out"></div>
-                              <div className="relative w-full h-full px-4 sm:px-6 lg:px-4 flex items-center justify-center">
-                                <div>
-                                  <h3 className="text-center text-white text-lg">
-                                       IS03
-                                  </h3>
-                                  <h3 className="text-center text-white text-3xl mt-2 font-bold">
-                                       Class 3
-                                  </h3>
-                                  <h3 className="text-white text-lg mt-2 text-yellow-100 ">
-                                      1 pending
-                                  </h3>
-                                </div>
-                              </div>
-                          </div>        
+                         { classes.map((classw, index) => {
+                            return (
+                              <CardClass key={classw.id} name={classw.name} id={classw.id} code={classw.code} pendings={classw.pendings} link={classw.link} color={classw.color}/>
+                            )
+                         }) }
+                                 
                         </div>
                         
                   </div>
