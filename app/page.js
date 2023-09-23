@@ -24,7 +24,7 @@ export default function Home() {
             <div className="mr-auto place-self-center lg:col-span-7">
               <div className='imgLading'>
               <Image 
-                  src={"/4896715.jpg"}
+                  src={"/4896713.svg"}
                   alt='main'
                   width={300}
                   height={80}
@@ -50,7 +50,7 @@ export default function Home() {
         <div className="mx-auto max-w-screen-xl">
             <div className="md:flex md:justify-between">
                 <div className="mb-6 md:mb-0">
-                    <a href="https://flowbite.com" className="flex items-center">
+                    <a href="/" className="flex items-center">
                         
                         <span className="self-center text-2xl font-semibold whitespace-nowrap text-gray-900">ClassVT</span>
                     </a>

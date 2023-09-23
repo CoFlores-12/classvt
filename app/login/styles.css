@@ -5,3 +5,7 @@
     align-items: center;
     flex-direction: column;
   }
+
+.inputLogin {
+  height: 30px;
+}
