@@ -1,35 +1,41 @@
 import { NextRequest, NextResponse } from "next/server";
 import absoluteUrl from 'next-absolute-url'
-import sqlite3 from "sqlite3";
-import { open, Database } from "sqlite";
-
-let db = null;
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = process.env.MONGODB_URI;
 
 export async function POST(request) {
     let response = null
+    const client = new MongoClient(uri, {
+        serverApi: {
+          version: ServerApiVersion.v1,
+          strict: true,
+          deprecationErrors: true,
+        }
+      });
+    
+    await client.connect()
+    const database = client.db("ClassVT");
     const res = await request.json()
     if (!res.username) {
         response = NextResponse.json({ error: 'Username is required' },
         { status: 500 })
+        return response
     } else if (!res.password) {
         response = NextResponse.json({ error: 'Password is required' }, { status: 500 })
+        return response
     }else {
-        if (!db) {
-            db = await open({
-                filename: "./collection.db", 
-                driver: sqlite3.Database, 
-            });
-        }
-        const items = await db.all("SELECT * FROM users WHERE username = ? AND password = ?", res.username, res.password);
+        
+        const items = await database.collection('users').find({username: res.username, password: res.password}).toArray()
         
         if (items.length === 0) {
-            response = NextResponse.json({ error: 'Username or password is incorrect' }, { status: 500 })
+            return NextResponse.json({ error: "Username or Password invalid",  data : 400 },
+            { status: 400 })
         }
         const { origin } = absoluteUrl(request);
         if (items[0].role === 'student') {
-            response = NextResponse.redirect(origin+'/home')
+            response = NextResponse.json({ url: origin+'/home'})
         } else if (items[0].role === 'teacher') {
-            response = NextResponse.redirect(origin+'/admin')
+            response = NextResponse.json({ url: origin+'/home'})
         }
     }
     return response

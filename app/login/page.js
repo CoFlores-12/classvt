@@ -11,8 +11,15 @@ export default function Login() {
 		}
 		const options = {method: 'POST', body: `{"password":"${username}","username":"${password}"}`};
 
-		fetch('http://localhost:3000/api/login', options)
-		.then(response => location.href = response.url)
+		fetch('/api/login', options)
+		.then(response => response.json())
+		.then(response => {
+			if (response.data === 400) {
+				alert(response.error)
+				return
+			}
+			location.href = response.url;
+		})
 		.catch(err => console.error(err));
 	  };
 
@@ -43,7 +50,7 @@ export default function Login() {
                                     className="w-full text-neutral-600 placeholder:text-neutral-600 px-4 bg-transparent outline-none inputLogin" />
                             </div>
 							</div>
-							<a href="forget-password.html"
+							<a href=""
 								className="mt-6 text-indigo-900 flex justify-end text-sm font-normal underline">Forgot
 								password?</a>
 							<button onClick={(e) => handleClick(e, "/")}

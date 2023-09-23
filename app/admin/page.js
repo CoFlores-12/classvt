@@ -1,17 +1,20 @@
-import sqlite3 from "sqlite3";
-import { open, Database } from "sqlite";
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = process.env.MONGODB_URI;
 
-let db = null;
+console.log(uri);
 
 export default async function Home() {
-    if (!db) {
-        db = await open({
-          filename: "./collection.db", 
-          driver: sqlite3.Database, 
-        });
-      }
-    
-    const items = await db.all("SELECT * FROM users");
+  const client = new MongoClient(uri, {
+    serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+    }
+  });
+  
+    await client.connect()
+    const database = client.db("ClassVT");
+    const items = await database.collection('users').find().toArray()
     
     return <div>{JSON.stringify(items)}</div>
 }
