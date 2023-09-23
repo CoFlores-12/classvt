@@ -1,7 +1,21 @@
+"use client"
 import Image from "next/image"
 import "./styles.css"
 
 export default function Login() {
+	const handleClick = (e, path) => {
+		const username = document.getElementById("12").value;
+		const password = document.getElementById("13").value;
+		if (username === "" || password === "") {
+			return;
+		}
+		const options = {method: 'POST', body: `{"password":"${username}","username":"${password}"}`};
+
+		fetch('http://localhost:3000/api/login', options)
+		.then(response => location.href = response.url)
+		.catch(err => console.error(err));
+	  };
+
 
     return (
 <main className="mainLogin">
@@ -32,7 +46,7 @@ export default function Login() {
 							<a href="forget-password.html"
 								className="mt-6 text-indigo-900 flex justify-end text-sm font-normal underline">Forgot
 								password?</a>
-							<button
+							<button onClick={(e) => handleClick(e, "/")}
                             className="bg-indigo-900 rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9">Login
                             now</button>
 

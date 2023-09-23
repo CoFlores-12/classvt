@@ -1,6 +1,18 @@
 .imgLading{
     display: flex;
-    justify-items: right;
+    justify-content: flex-end;
     align-items: center;
     width: 100%;
+    position: relative;
+    right: -50%;
+}
+@media screen and (max-width: 768px) {
+    .imgLading{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        position: relative;
+        right: 5%;
+    }
 }

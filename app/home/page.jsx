@@ -1,7 +1,9 @@
-export default function Page() {
-    return (
-        <div>
-        <h1>Home Page</h1>
-        </div>
-    );
-    }   
+"use client"
+
+export default function MyComponent() {
+  return (
+    <div>
+      <h1>Home</h1>
+    </div>
+  );
+}
