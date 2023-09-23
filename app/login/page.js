@@ -11,7 +11,7 @@ export default function Login() {
 		}
 		const options = {method: 'POST', body: `{"password":"${username}","username":"${password}"}`};
 
-		fetch('http://localhost:3000/api/login', options)
+		fetch('/api/login', options)
 		.then(response => location.href = response.url)
 		.catch(err => console.error(err));
 	  };
