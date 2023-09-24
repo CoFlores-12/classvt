@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import absoluteUrl from 'next-absolute-url'
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = process.env.MONGODB_URI;
+import { SignJWT } from "jose";
+import { getJwtSecretKey } from "@/libs/auth";
 
 export async function POST(request) {
     let response = null
@@ -31,14 +32,34 @@ export async function POST(request) {
             return NextResponse.json({ error: "Username or Password invalid",  data : 400 },
             { status: 400 })
         }
-        const { origin } = absoluteUrl(request);
+        let uri = '';
         if (items[0].role === 'student') {
-            response = NextResponse.json({ url: '/home'})
+            uri = { url: '/home'}
         } else if (items[0].role === 'teacher') {
-            response = NextResponse.json({ url: '/admin/teacher'})
+            uri = { url: '/admin/teacher'}
         } else if (items[0].role === 'admin') {
-            response = NextResponse.json({ url: '/admin/admin'})
+            uri = { url: '/admin/admin'}
         }
+        const token = await new SignJWT({
+            id: items[0]._id,
+            role: items[0].role, 
+          })
+            .setProtectedHeader({ alg: "HS256" })
+            .setIssuedAt()
+            .setExpirationTime("30s") // Set your own expiration time
+            .sign(getJwtSecretKey());
+      
+        response = NextResponse.json(
+            uri,
+            { success: true },
+            { status: 200, headers: { "content-type": "application/json" } }
+          );
+      
+        response.cookies.set({
+            name: "token",
+            value: token,
+            path: "/",
+          });
     }
     return response
 }
