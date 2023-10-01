@@ -1,20 +1,17 @@
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = process.env.MONGODB_URI;
+"use client"
+import NavBar from './NavBar';
+import { useState } from 'react';
+import Container from './container';
 
-console.log(uri);
-
-export default async function Home() {
-  const client = new MongoClient(uri, {
-    serverApi: {
-      version: ServerApiVersion.v1,
-      strict: true,
-      deprecationErrors: true,
-    }
-  });
+export default function Home() {
+  const [active, setActive] = useState('Home')
   
-    await client.connect()
-    const database = client.db("ClassVT");
-    const items = await database.collection('users').find().toArray()
-    
-    return <div>{JSON.stringify(items)}</div>
+  return <div>
+      <NavBar setActive={setActive}/>
+      <main>
+        <div className='container-fluid p-5'>
+          <Container active={active} />
+        </div>
+      </main>
+    </div>
 }

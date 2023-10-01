@@ -4,6 +4,7 @@ import "./styles.css"
 import 'flowbite';
 import { initFlowbite } from 'flowbite'
 import { Modal } from 'flowbite';
+import Logo from "../components/logo";
 
 
 export default function Login() {
@@ -62,13 +63,7 @@ export default function Login() {
         </div>
     </div>
 </div>
-			<Image 
-            src="../next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-            />
+			<Logo height={200} width={300} />
 			<p className="text-center text-neutral-600 text-base font-semibold">Login into your account</p>
 			<div className="mt-10">
 				<div className="px-10">

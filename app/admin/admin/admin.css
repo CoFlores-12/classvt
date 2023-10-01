@@ -1,0 +1,28 @@
+.active {
+    background-color: rgb(39, 33, 92);
+}
+li{
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+nav {
+    transition: height 5s linear;
+}
+
+.itemClasses, .itemUser{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 0px !important;
+}
+.itemClasses:hover, .itemUser:hover{
+    background-color: #e4e4e4;
+}
+.itemClasses > .avatar {
+    height: 100%;
+    aspect-ratio: 1/1;
+    margin-right: 10px;
+}
+.bodyItemClass{
+    padding: 10px 0px;
+}

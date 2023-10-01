@@ -14,6 +14,10 @@ main {
     margin-top: 20px;
     overflow: hidden;
 }
+.works:hover {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.212);
+    background-color: transparent;
+}
 .itemMain {
     display: flex;
     flex-direction: row;
