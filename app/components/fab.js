@@ -12,8 +12,8 @@ import { Modal } from 'flowbite';
 
 export default function Fab() {
     const [isHide, setHide] = useState(true);
-    const modalOCnt = document.getElementById('authentication-modal');
-    const modalCnt = document.getElementById('newUser-modal');
+    const modalOCnt = null;
+    const modalCnt = null;
     const modal = new Modal(modalOCnt,{});
     const newUser = new Modal(modalCnt,{});
     const options = ['New className', 'New User'];
