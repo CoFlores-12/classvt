@@ -12,10 +12,11 @@ import { Modal } from 'flowbite';
 
 export default function Fab() {
     const [isHide, setHide] = useState(true);
-    const modalOCnt = null;
-    const modalCnt = null;
-    const modal = new Modal(modalOCnt,{});
-    const newUser = new Modal(modalCnt,{});
+    const modalOCnt = document.getElementById('authentication-modal');
+    function togglemodal(modalProp) {
+        const modal = new Modal(document.getElementById(modalProp),{});
+        modal.show();
+    }
     const options = ['New className', 'New User'];
     return (
         <div>
@@ -86,7 +87,7 @@ export default function Fab() {
             <div className="flex flex-row items-center justify-center mb-2">
                 New Class
                 <button
-                         onClick={() => modal.show()}
+                         onClick={() => togglemodal('authentication-modal')}
                         className="flex flex-row items-center justify-center p-0 h-10 w-10 bg-indigo-900 rounded-full hover:bg-indigo-800 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none text-white p-3 ml-2">
                 <FontAwesomeIcon icon={faBook} />
                 </button>
@@ -94,7 +95,7 @@ export default function Fab() {
             <div className="flex flex-row items-center justify-center mb-2">
                 New User
                 <button
-                    onClick={() => newUser.show()}
+                    onClick={() => togglemodal('newUser-modal')}
                         className="flex flex-row items-center justify-center p-0 h-10 w-10 bg-indigo-900 rounded-full hover:bg-indigo-800 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none text-white p-3 ml-2">
                 <FontAwesomeIcon icon={faUser} />
                 </button>
