@@ -1,5 +1,4 @@
 "use client"
-import Image from "next/image"
 import "./styles.css"
 import 'flowbite';
 import { initFlowbite } from 'flowbite'
@@ -68,14 +67,14 @@ export default function Login() {
 			<div className="mt-10">
 				<div className="px-10">
 					<div className="mt-2 ">
-						<label htmlFor="" className="text-neutral-600 text-base font-normal">User:</label>
+						<label className="text-neutral-600 text-base font-normal">User:</label>
 						<div className="flex my-3 items-center justify-between bg-zinc-100 rounded-lg  ">
 							<input type="text" name="" placeholder="" id="12"
                                     className="w-full text-neutral-600 placeholder:text-neutral-600 px-4 bg-transparent outline-none inputLogin" />
                             </div>
 						</div>
 						<div className="mt-6 ">
-							<label htmlFor="" className="text-neutral-600 text-base font-normal">Password :</label>
+							<label  className="text-neutral-600 text-base font-normal">Password :</label>
 							<div className="flex my-3 items-center justify-between bg-zinc-100 rounded-lg  ">
 								<input type="password" name="" placeholder="" id="13"
                                     className="w-full text-neutral-600 placeholder:text-neutral-600 px-4 bg-transparent outline-none inputLogin" />

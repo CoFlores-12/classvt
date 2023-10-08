@@ -25,7 +25,7 @@ export default function NavBar({setActive}) {
                 <div className="flex flex-row items-center justify-between " style={{width: '100%'}}>
                     <div className="flex flex-row items-center">
                         <Logo height={30} width={30}/>
-                        ClassVT
+                        <span className="self-center text-xl font-semibold whitespace-nowrap ">ClassVT</span>
                     </div>
                     <div onClick={() => setHide(!isHide)} className="tn bg-indigo-900 text-white block sm:hidden">
                         <FontAwesomeIcon icon={faBars} />
@@ -41,6 +41,7 @@ export default function NavBar({setActive}) {
                 </div>
                 
             </div>
+           
            
         </nav>
     )

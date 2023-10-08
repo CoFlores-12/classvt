@@ -45,7 +45,6 @@ export default function Container({children, active}) {
         case 'Teachers':
             return (
                 <div id='Teachers'>
-                    <center>Teachers</center>
                     <ListaUsers items={[{"_id":{"$oid":"6518cde6733acf44fc316434"},"name":"Teacher","username":"test","password":"test","role":"student","img":"https://static.vecteezy.com/system/resources/previews/019/896/008/original/male-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png","classes":[{"name":"Class 1","id":"65103ce9199552144ab4e698"}]}]} />
                 </div>
             )
@@ -53,7 +52,6 @@ export default function Container({children, active}) {
         case 'Students':
             return (
                 <div id='Students'>
-                    <center>Students</center>
                     <ListaUsers items={[{"_id":{"$oid":"6518cde6733acf44fc316434"},"name":"test","username":"test","password":"test","role":"student","img":"https://static.vecteezy.com/system/resources/previews/019/896/008/original/male-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png","classes":[{"name":"Class 1","id":"65103ce9199552144ab4e698"}]}]} />
                 </div>
             )
